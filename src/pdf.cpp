@@ -39,23 +39,20 @@
 #define DELETE_TXT_FILE
 
 namespace pdf {
-	using namespace std;
-	// Concepts Constraints
-	template<typename T>
-	concept hasContent = requires(T t) { t.Content(); };
+#define FLOAT_EQUAL(f0, f1) (abs((f1) - (f0)) < 0.0001)
+	
+	// class declearations
+	template<class T> class Component;
+	
+	class Text;
+	class Rect;
+	class Circle;
+	class Streak;
+	class Image;
 
+	// component constraint
 	template <typename T>
 	concept component = std::is_base_of<Component<T>, T>::value;
-
-	template <class T>
-	void print(std::initializer_list<T> elems) {
-		for (const auto& elem : elems) {
-			std::cout << elem << " ";
-		}
-		std::cout << std::endl;
-	}
-
-#define FLOAT_EQUAL(f0, f1) (abs((f1) - (f0)) < 0.0001)
 
 	enum class LANGUAGE {
 		ENGLISH,
@@ -1057,7 +1054,7 @@ namespace pdf {
 				m_currFile->write(imageData.data(), imageData.size());
 				return fmt::format("/I{}", m_imageIndex);
 			}
-			print({ fmt::format("Image path: {} not found\n", imagePath) });
+			printf("Image path: %s not found\n", imagePath);
 			return std::string();
 		}
 
@@ -1094,7 +1091,7 @@ namespace pdf {
 
 	public:
 		// PDF元素绘制底层接口
-		template<hasContent T>
+		template<component T>
 		void Draw(const T& component) {}
 
 		template<>
