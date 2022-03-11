@@ -11,4 +11,6 @@ find_package(fmt)
 add_subdirectory(./lxd lxd)
 add_subdirectory(./src src)
 
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR})
+
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})

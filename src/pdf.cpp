@@ -14,9 +14,9 @@
 #include <fmt/format.h>
 #include <fmt/xchar.h>
 // local lxd
-#include "../lxd/src/fileio.h"
-#include "../lxd/src/encoding.h"
-#include "../lxd/src/str.h"
+#include "lxd/src/fileio.h"
+#include "lxd/src/encoding.h"
+#include "lxd/src/str.h"
 // windows api
 #include <Windows.h>
 #include <cstring>
@@ -24,9 +24,9 @@
 #include <wingdi.h>
 // stb 
 #define STB_IMAGE_IMPLEMENTATION
-#include "../util/stb_image.h"
+#include "util/stb_image.h"
 // timer
-#include "../util/cxxtimer.hpp"
+#include "util/cxxtimer.hpp"
 
 #ifdef DrawText
 #undef DrawText
