@@ -132,21 +132,13 @@ namespace pdf {
 	};
 
 	std::string UnicodeToUtf8(const std::wstring_view wstr) {
-#ifdef USE_LXD
-		return lxd::utf8_encode(wstr);
-#else 
 		std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
 		return converter.to_bytes(std::wstring(wstr));
-#endif
 	}
 
 	std::wstring Utf8ToUnicode(const std::string_view str) {
-#ifdef USE_LXD
-		return lxd::utf8_decode(str);
-#else 
 		std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
 		return converter.from_bytes(std::string(str));
-#endif
 	}
 
 	static std::map<char, float> CharWidthPool;
